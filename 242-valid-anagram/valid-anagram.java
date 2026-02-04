@@ -1,31 +1,26 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
-    if(s.length()!=t.length())return false;
-       HashMap <Character,Integer> smap = new HashMap<>();
-        for(int i=0;i<s.length();i++){
-        char key = s.charAt(i);
-        if(smap.containsKey(key)){
-            int freq = smap.get (key);
-            smap.put(key,freq+1);
-        }
-        else smap.put(key,1);
-      }
-       HashMap <Character,Integer> tmap = new HashMap<>();
-        for(int i=0;i<t.length();i++){
-        char key = t.charAt(i);
-        if(tmap.containsKey(key)){
-            int freq = tmap.get (key);
-            tmap.put(key,freq+1);
-        }
-        else tmap.put(key,1);
-      }
-
-        for(char key : smap.keySet()){
-            int val1 = smap.get(key);
-            if(!tmap.containsKey(key)) return false;
-            int val2 = tmap.get(key);
-            if (val1!=val2) return false;
-      }
-      return true;
+    int[] arr = new int[26];
+    for(int i=0;i<s.length(); i++){
+        int index = s.charAt(i) - 'a';
+        arr[index] ++; //c-a = 3 
+    }
+    for(int i=0; i<t.length(); i++){
+        int index = t.charAt(i)-'a';
+        arr[index ]--;
+    }
+    for(int i=0;i<arr.length; i++){
+        if(arr[i] != 0){
+            return false;
+        }  
+    }
+    return true;
     }
 }
+// we can use here hashmap or array
+/*
+we use array when we know input is fixed size
+& elements are not different and small in line 
+
+we use hashmap when input os large and uncertain
+*/
