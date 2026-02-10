@@ -1,5 +1,7 @@
 class Solution {
     public boolean isPalindrome(int x) {
+
+        // method 1
     //     if (x < 0) return false;
     //    int temp = x ;
     //    int rev = 0;
@@ -9,6 +11,8 @@ class Solution {
     //     temp = temp/10;
     //    }   
     //    return (x == rev);
+
+    // method 2;
     int temp = x;
         int rev = 0;  
         int rem;
