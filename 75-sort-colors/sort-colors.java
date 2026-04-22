@@ -1,19 +1,22 @@
 class Solution {
-    public void sortColors(int[] nums) {
-        int n = nums.length;
-        int noOfZ = 0;
-        int noOfO = 0;
-        int noOfT = 0;
-
-        for(int i=0; i<n; i++){
-            if(nums[i] == 0) noOfZ++;
-            if(nums[i] == 1) noOfO++;
-            if(nums[i] == 2) noOfT++;
-        }
-        for(int i=0;i<n;i++){
-            if(i < noOfZ) nums[i] = 0;
-            else if(i < noOfZ + noOfO) nums[i] = 1;
-            else nums[i] = 2;
+    public void sortColors(int[] arr) {
+        int n = arr.length;
+        int mid = 0, hi= n-1, lo=0;
+        while(mid <= hi){
+            if(arr[mid] == 0){
+                int temp = arr[mid];
+                arr[mid] = arr[lo];
+                arr[lo] = temp;
+                lo++; 
+                mid++;
+            }
+            else if(arr[mid] == 1)mid++;
+            else {
+                int temp = arr[mid];
+                arr[mid] = arr[hi];
+                arr[hi] = temp;
+                hi--;
+            }
         }
     }
 }
