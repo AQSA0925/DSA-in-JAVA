@@ -7,8 +7,7 @@ class Solution {
         }
         return set.size();
     }
-
-    public int reverse(int n) {
+        public int reverse(int n) {
         int r = 0;
         while (n != 0) {
             r = r * 10 + n % 10;
@@ -16,4 +15,5 @@ class Solution {
         }
         return r;
     }
+
 }
