@@ -14,15 +14,19 @@
  * }
  */
 class Solution {
-    private void preorder(TreeNode root,List<Integer> ans){
-        if(root == null) return ;
-        ans.add(root.val);
-        preorder(root.left,ans);
-        preorder(root.right,ans);
-    }
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
-        preorder(root,ans);
-        return ans;
-    }
+        Stack<TreeNode> st = new Stack <>();
+        if(root != null) st.push(root);
+        while(st.size() > 0){
+            TreeNode top = st.pop();
+            ans.add(top.val);
+
+///here we push right first becoz , when we pop the values at that time left ral will come first : stack(LIFO)
+
+            if(top.right != null) st.push(top.right);
+            if(top.left != null) st.push(top.left);
+        }
+            return ans;
+     }
 }
