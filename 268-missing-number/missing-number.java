@@ -1,14 +1,19 @@
-//Aqsa
 class Solution {
     public int missingNumber(int[] nums) {
-        int n = nums.length;
-        
-        int expectedSum = n*(n+1)/2;
-        int actualSum = 0;
+        Arrays.sort(nums);
+        int low = 0;
+        int high = nums.length - 1;
 
-        for(int num : nums){
-            actualSum += num;
+
+        while(low <= high){
+            int mid = low + (high-low)/2;
+            if(nums[mid] == mid){
+                low = mid +1;
+            }
+            else{
+                high = mid - 1;
+            }
         }
-        return expectedSum - actualSum;
+        return low;
     }
 }
