@@ -1,22 +1,20 @@
 class Solution {
     public int searchInsert(int[] nums, int target) {
-        return insertPosition(nums,0,nums.length-1,target);
-    }
-    public int insertPosition(int[] nums, int start, int end, int target){
-        //base case :
-        if(start > end){
-            return start;
-        }
-        int mid = start + (end-start)/2;
+        int low = 0;
+        int high = nums.length-1;
 
-        if(nums[mid] == target){
-            return mid;
+        while(low <= high){
+            int mid = low + (high-low)/2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            else if (nums[mid] < target){
+                low = mid + 1;
+            }
+            else{
+                high = mid - 1;
+            }   
         }
-        else if(nums[mid] < target){
-            return insertPosition(nums,mid+1,end,target);
-        }
-        else {
-            return insertPosition(nums,start , mid-1,target);
-        }
+        return low;
     }
 }
